@@ -1,0 +1,7 @@
+project_id = "era-xi"
+
+[functions.start-daily]
+verify_jwt = true
+
+[functions.submit-run]
+verify_jwt = true
