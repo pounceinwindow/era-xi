@@ -149,16 +149,36 @@ function MiniPitch({ slots }: { slots: string[] }) {
   return <div className="mini-pitch">{slots.map((slot, index) => <i key={`${slot}-${index}`} data-line={slot === "GK" ? "gk" : ["LB","CB","RB","LWB","RWB"].includes(slot) ? "def" : ["LW","RW","ST"].includes(slot) ? "att" : "mid"} />)}</div>;
 }
 
+function PlayerPortrait({ player, compact = false }: { player: Player; compact?: boolean }) {
+  const [failed, setFailed] = useState(false);
+  const initials = player.name.split(" ").map((part) => part[0]).slice(0, 2).join("");
+  if (failed) {
+    return <span className={`portrait-fallback ${compact ? "compact" : ""}`} aria-label={`Портрет-заглушка: ${player.name}`}>
+      <Users size={compact ? 22 : 54} strokeWidth={1}/>
+      <b>{initials}</b>
+    </span>;
+  }
+  return <img
+    src={`${import.meta.env.BASE_URL}players/${player.id}.webp`}
+    alt={`Фотография: ${player.name}`}
+    loading={compact ? "lazy" : "eager"}
+    decoding="async"
+    onError={() => setFailed(true)}
+  />;
+}
+
 function PlayerCard({ player, onPick, compact = false }: { player: Player; onPick?: () => void; compact?: boolean }) {
   const content = <>
     <div className="player-image">
-      <img src={`${import.meta.env.BASE_URL}players/${player.id}.webp`} alt={`Фотография: ${player.name}`}
-        loading="lazy" onError={(event) => { event.currentTarget.style.display = "none"; }} />
-      <Users className="image-fallback" size={compact ? 42 : 76} strokeWidth={0.8}/>
+      <PlayerPortrait player={player} compact={compact}/>
     </div>
     <div className="player-rating"><b>{player.rating}</b><span>{player.positions[0]}</span></div>
     <div className="player-info"><small>{player.country} · ERA XI RATING</small><strong>{player.name}</strong>
-      {!compact && <div><span>АТК {player.attack}</span><span>ЦЕН {player.midfield}</span><span>ОБР {player.defense}</span></div>}
+      {!compact && <div className="player-stats">
+        <span><i>АТК</i><b>{player.attack}</b></span>
+        <span><i>ЦЕН</i><b>{player.midfield}</b></span>
+        <span><i>ОБР</i><b>{player.defense}</b></span>
+      </div>}
     </div>
   </>;
   return onPick ? <button className={`player-card ${compact ? "compact" : ""}`} onClick={onPick}>{content}<span className="pick-label">Выбрать <ChevronRight size={16}/></span></button>
@@ -211,8 +231,10 @@ function SquadPage() {
         const fit = positionFit(player, slot);
         return <button key={`${playerId}-${index}`} className={`pitch-player ${selectedSlot === index ? "selected" : ""}`} data-index={index}
           onClick={() => selectSlot(index)} aria-label={`${player.name}, слот ${slot}, совместимость ${Math.round(fit * 100)}%`}>
-          <img src={`${import.meta.env.BASE_URL}players/${player.id}.webp`} alt="" onError={(e) => e.currentTarget.style.display = "none"}/>
-          <span>{slot}</span><b>{player.name.split(" ").at(-1)}</b><small className={fit < 0.84 ? "bad" : ""}>{Math.round(fit * 100)}%</small>
+          <span className="pitch-portrait"><PlayerPortrait player={player} compact/></span>
+          <span className="pitch-slot">{slot}</span>
+          <b title={player.name}>{player.name}</b>
+          <small className={fit < 0.84 ? "bad" : ""}>{Math.round(fit * 100)}%</small>
         </button>;
       })}
     </div>
