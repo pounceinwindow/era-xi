@@ -1,0 +1,930 @@
+[
+  {
+    "playerId": "casillas",
+    "playerName": "Икер Касильяс",
+    "author": "Web Summit",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Iker-Casillas-SportsTrade-2021-cropped.jpg"
+  },
+  {
+    "playerId": "r-carlos",
+    "playerName": "Роберто Карлос",
+    "author": "Web Summit",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:LS3_1288_(53332367864)_(cropped).jpg"
+  },
+  {
+    "playerId": "figo",
+    "playerName": "Луиш Фигу",
+    "author": "Žan Kolman",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Luis_Figo_2023.jpg"
+  },
+  {
+    "playerId": "raul",
+    "playerName": "Рауль",
+    "author": "Barcex",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:25th_Laureus_World_Sports_Awards_-_Ra%C3%BAl_-_240422_132916-2_(cropped).jpg"
+  },
+  {
+    "playerId": "makelele",
+    "playerName": "Клод Макелеле",
+    "author": "Web Summit Qatar",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Claude_Mak%C3%A9l%C3%A9l%C3%A9_(53557564951)_(cropped).jpg"
+  },
+  {
+    "playerId": "dida",
+    "playerName": "Дида",
+    "author": "NullReason",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Dida-wikipedia_(cropped_2).png"
+  },
+  {
+    "playerId": "maldini",
+    "playerName": "Паоло Мальдини",
+    "author": "GOAL TV",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Paolo_Maldini_AC_Milan_Technical_director_2018.jpg"
+  },
+  {
+    "playerId": "nesta",
+    "playerName": "Алессандро Неста",
+    "author": "Joerudi",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Alessandro_Nesta_as_Miami_FC_Manager.jpg"
+  },
+  {
+    "playerId": "pirlo",
+    "playerName": "Андреа Пирло",
+    "author": "Clément Bucco-Lechat",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:20150616_-_Portugal_-_Italie_-_Gen%C3%A8ve_-_Andrea_Pirlo_(cropped).jpg"
+  },
+  {
+    "playerId": "kaka",
+    "playerName": "Кака",
+    "author": "Евгений Асмолов",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Kak%C3%A1_visited_Stadium_St._Petersburg.jpg"
+  },
+  {
+    "playerId": "lehmann",
+    "playerName": "Йенс Леманн",
+    "author": "Sven Mandel",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Jens_Lehmann_-_2019202184453_2019-07-21_Champions_for_Charity_-_3017_-_B70I3052_(cropped).jpg"
+  },
+  {
+    "playerId": "campbell",
+    "playerName": "Сол Кэмпбелл",
+    "author": "Web Summit",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Sol_Campbell_(54921202604)_(cropped).jpg"
+  },
+  {
+    "playerId": "vieira",
+    "playerName": "Патрик Виейра",
+    "author": "Simon Heseltine",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Patrick_Vieira_NYCFC_(cropped).JPG"
+  },
+  {
+    "playerId": "bergkamp",
+    "playerName": "Деннис Бергкамп",
+    "author": "Kieran Clarke",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Dennis_Bergkamp_2014_(cropped).jpg"
+  },
+  {
+    "playerId": "henry",
+    "playerName": "Тьерри Анри",
+    "author": "Web Summit",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Thierry_Henry_(51649035951)_(cropped).jpg"
+  },
+  {
+    "playerId": "pires",
+    "playerName": "Робер Пирес",
+    "author": "Doha Stadium Plus Qatar",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Robert_Pires_2011.jpg"
+  },
+  {
+    "playerId": "v-baia",
+    "playerName": "Витор Баия",
+    "author": "Biser Todorov",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Vitor_baia_in_2016.jpg"
+  },
+  {
+    "playerId": "r-carvalho",
+    "playerName": "Рикарду Карвалью",
+    "author": "Майоров Владимир",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Ricardo_Carvalho.jpg"
+  },
+  {
+    "playerId": "costinha",
+    "playerName": "Коштинья",
+    "author": "Christophe95",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Costinha_(footballer_born_1974).jpg"
+  },
+  {
+    "playerId": "deco",
+    "playerName": "Деку",
+    "author": "Fotos Flu",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Deco_com_o_Fluminense_em_2013_(cropped).jpg"
+  },
+  {
+    "playerId": "derlei",
+    "playerName": "Дерлей",
+    "author": "Alexander Oganezov aka Sasho68",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Derlei.jpg"
+  },
+  {
+    "playerId": "maniche",
+    "playerName": "Манише",
+    "author": "Дмитрий Садовников",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:KL_2015_Final_(4).jpg"
+  },
+  {
+    "playerId": "dudek",
+    "playerName": "Ежи Дудек",
+    "author": "Zureks",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Jerzy_Dudek_(cropped).jpg"
+  },
+  {
+    "playerId": "xabi",
+    "playerName": "Хаби Алонсо",
+    "author": "DONOSTIA KULTURA",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Los_Caminos_del_f%C3%BAtbol._Xabi_Alonso_(39666778464)_(cropped).jpg"
+  },
+  {
+    "playerId": "l-garcia",
+    "playerName": "Луис Гарсия",
+    "author": "Chin Yu Chu",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Luis_Garc%C3%ADa_Sanz_-_53690670543.jpg"
+  },
+  {
+    "playerId": "hyypia",
+    "playerName": "Сами Хююпия",
+    "author": "Дмитрий Неймырок/Dmitry Neymyrok/Dmitrij Nejmyrok",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Sami_Hyypia_2012_(cropped).jpg"
+  },
+  {
+    "playerId": "valdes",
+    "playerName": "Виктор Вальдес",
+    "author": "Clément Bucco-Lechat",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Spain_-_Chile_-_10-09-2013_-_Geneva_-_Victor_Valdes_6_(cropped).jpg"
+  },
+  {
+    "playerId": "puyol",
+    "playerName": "Карлес Пуйоль",
+    "author": "Pedro J Pacheco",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Premios_Goya_2020_-_Carles_Pujol.jpg"
+  },
+  {
+    "playerId": "iniesta",
+    "playerName": "Андрес Иньеста",
+    "author": "内閣官房内閣広報室",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Andr%C3%A9s_Iniesta_2019.jpg"
+  },
+  {
+    "playerId": "messi",
+    "playerName": "Лионель Месси",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Leo_Messi_Argentina_v_Egypt_7_July_2026-1.jpg"
+  },
+  {
+    "playerId": "eto",
+    "playerName": "Самюэль Это’о",
+    "author": "Майоров Владимир",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Samuel_2011.jpg"
+  },
+  {
+    "playerId": "van-der-sar",
+    "playerName": "Эдвин ван дер Сар",
+    "author": "Web Summit",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Edwin_van_der_Sar_2015.jpg"
+  },
+  {
+    "playerId": "ferdinand",
+    "playerName": "Рио Фердинанд",
+    "author": "Web Summit",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Web_Summit_2015_-_Dublin,_Ireland_-_22183056474_(cropped).jpg"
+  },
+  {
+    "playerId": "vidic",
+    "playerName": "Неманья Видич",
+    "author": "user:Biso",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Vidi%C4%87_(cropped).jpg"
+  },
+  {
+    "playerId": "rooney",
+    "playerName": "Уэйн Руни",
+    "author": "All-Pro Reels from District of Columbia, USA",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Wayne_Rooney_(50121495731)_(cropped).jpg"
+  },
+  {
+    "playerId": "lucio",
+    "playerName": "Лусио",
+    "author": "Palácio do Planalto from Brasilia, Brasil",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Lucio_2019_(cropped).jpg"
+  },
+  {
+    "playerId": "zanetti",
+    "playerName": "Хавьер Санетти",
+    "author": "Илья Хохлов",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Metalist-Inter_(2).jpg"
+  },
+  {
+    "playerId": "milito",
+    "playerName": "Диего Милито",
+    "author": "Prensa TV Pública from Buenos Aires, Argentina",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Diego_Milito_(22677058983)_(cropped).jpg"
+  },
+  {
+    "playerId": "terry",
+    "playerName": "Джон Терри",
+    "author": "ChristopherJClarke",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:John_Terry_at_pro-am_Wentworth_golf_course_September_2023_(cropped).jpg"
+  },
+  {
+    "playerId": "lampard",
+    "playerName": "Фрэнк Лэмпард",
+    "author": "Mehdi Bolourian",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Frank_Lampard_2019.jpg"
+  },
+  {
+    "playerId": "drogba",
+    "playerName": "Дидье Дрогба",
+    "author": "Y.Leclercq©",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Didier_Drogba_(2019)_(cropped2).jpg"
+  },
+  {
+    "playerId": "a-cole",
+    "playerName": "Эшли Коул",
+    "author": "Stanislav Vedmid",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:ACole.JPG"
+  },
+  {
+    "playerId": "mata",
+    "playerName": "Хуан Мата",
+    "author": "Paladisious",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Juan_Mata_Melbourne_Victory_Signing_Press_Conference.png"
+  },
+  {
+    "playerId": "lahm",
+    "playerName": "Филипп Лам",
+    "author": "Elena Ternovaja",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Philipp_Lahm_auf_der_Berlinale_2024,_Ausschnitt.jpg"
+  },
+  {
+    "playerId": "schweini",
+    "playerName": "Бастиан Швайнштайгер",
+    "author": "Anne Barth / re:publica",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Re-publica_23_-_Tag_3_(52957826298)_(cropped).jpg"
+  },
+  {
+    "playerId": "ribery",
+    "playerName": "Франк Рибери",
+    "author": "Sven Mandel",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Franck_Ribery_2019_(cropped).jpg"
+  },
+  {
+    "playerId": "muller",
+    "playerName": "Томас Мюллер",
+    "author": "Werner100359",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:FC_Red_Bull_Salzburg_gegen_Bayern_M%C3%BCnchen_(2025-01-06_Testspiel)_19.jpg"
+  },
+  {
+    "playerId": "weidenfeller",
+    "playerName": "Роман Вайденфеллер",
+    "author": "Tim Reckmann from Hamm, Deutschland",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Roman_Weidenfeller_2014_(cropped).jpg"
+  },
+  {
+    "playerId": "hummels",
+    "playerName": "Матс Хуммельс",
+    "author": "Sandro Halank, Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:2023-08-12_TSV_Schott_Mainz_gegen_Borussia_Dortmund_(DFB-Pokal_2023-24)_by_Sandro_Halank%E2%80%93103.jpg"
+  },
+  {
+    "playerId": "gundogan",
+    "playerName": "Илкай Гюндоган",
+    "author": "Granada",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:20180602_FIFA_Friendly_Match_Austria_vs._Germany_%C4%B0lkay_G%C3%BCndo%C4%9Fan_850_0728.jpg"
+  },
+  {
+    "playerId": "reus",
+    "playerName": "Марко Ройс",
+    "author": "Sandro Halank, Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:2023-08-12_TSV_Schott_Mainz_gegen_Borussia_Dortmund_(DFB-Pokal_2023-24)_by_Sandro_Halank%E2%80%93126.jpg"
+  },
+  {
+    "playerId": "lewandowski",
+    "playerName": "Роберт Левандовский",
+    "author": "Sven Mandel",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:2019147183134_2019-05-27_Fussball_1.FC_Kaiserslautern_vs_FC_Bayern_M%C3%BCnchen_-_Sven_-_1D_X_MK_II_-_0228_-_B70I8527_(cropped).jpg"
+  },
+  {
+    "playerId": "subotic",
+    "playerName": "Невен Суботич",
+    "author": "Reto Stauffer",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Subotic170727.jpg"
+  },
+  {
+    "playerId": "navas",
+    "playerName": "Кейлор Навас",
+    "author": "Антон Зайцев",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Keylor_Navas_2018_(cropped).jpg"
+  },
+  {
+    "playerId": "ramos",
+    "playerName": "Серхио Рамос",
+    "author": "Real Madrid",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Sergio_Ramos_Interview_2021_(cropped).jpg"
+  },
+  {
+    "playerId": "modric",
+    "playerName": "Лука Модрич",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Luka_Modric_Croatia_v_Portugal_2_July_2026-055.jpg"
+  },
+  {
+    "playerId": "kroos",
+    "playerName": "Тони Кроос",
+    "author": "https://www.youtube.com/@realmadrid",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Toni_Kroos_Real_Madrid_2021.jpg"
+  },
+  {
+    "playerId": "marcelo",
+    "playerName": "Марсело",
+    "author": "Fotografías Archimadrid.es",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Marcelo_Vieira_in_2022.jpg"
+  },
+  {
+    "playerId": "bale",
+    "playerName": "Гарет Бейл",
+    "author": "حسین ظهروند",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:2022_FIFA_World_Cup_United_States_1%E2%80%931_Wales_-_(32)_(cropped).jpg"
+  },
+  {
+    "playerId": "dybala",
+    "playerName": "Пауло Дибала",
+    "author": "Olga Shcherbytska",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:%D0%9C%D0%B0%D1%82%D1%87_%C2%AB%D0%94%D0%B8%D0%BD%D0%B0%D0%BC%D0%BE%C2%BB_-_%C2%AB%D0%AE%D0%B2%D0%B5%D0%BD%D1%82%D1%83%D1%81%C2%BB_0-2._20_%D0%BE%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8F_2020_%D0%B3%D0%BE%D0%B4%D0%B0_%E2%80%94_1153905_(cropped).jpg"
+  },
+  {
+    "playerId": "higuain",
+    "playerName": "Гонсало Игуаин",
+    "author": "Анна Нэсси",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Gonzalo_Higua%C3%ADn_2019.jpg"
+  },
+  {
+    "playerId": "mandzukic",
+    "playerName": "Марио Манджукич",
+    "author": "Антон Зайцев",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Mario_Mand%C5%BEuki%C4%87_in_2018.jpg"
+  },
+  {
+    "playerId": "alba",
+    "playerName": "Жорди Альба",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Jordi_Alba_NE_Revolution_Inter_Miami_7.9.25-047_(cropped).jpg"
+  },
+  {
+    "playerId": "busquets",
+    "playerName": "Серхио Бускетс",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Sergio_Busquets_NYCFC_Miami_24_Sep_2025-020_(cropped).jpg"
+  },
+  {
+    "playerId": "neymar",
+    "playerName": "Неймар",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Neymar_Junior_Brazil_V_Morocco_13_June_2026-40.jpg"
+  },
+  {
+    "playerId": "suarez",
+    "playerName": "Луис Суарес",
+    "author": "The White House",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Luis_Su%C3%A1rez_2026_(cropped).jpg"
+  },
+  {
+    "playerId": "rakitic",
+    "playerName": "Иван Ракитич",
+    "author": "Дмитрий Пукалик",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Ivan_Rakiti%C4%87_2020_(cropped).jpg"
+  },
+  {
+    "playerId": "courtois",
+    "playerName": "Тибо Куртуа",
+    "author": "Кирилл Венедиктов",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Thibaut_Courtois_at_the_2018_World_Cup_(cropped).jpg"
+  },
+  {
+    "playerId": "godin",
+    "playerName": "Диего Годин",
+    "author": "Анна Нэсси",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Diego_God%C3%ADn_2018_(cropped).jpg"
+  },
+  {
+    "playerId": "koke",
+    "playerName": "Коке",
+    "author": "Анна Нэсси",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Koke_2019.jpg"
+  },
+  {
+    "playerId": "d-costa",
+    "playerName": "Диего Коста",
+    "author": "Mahdi Zare/Fars News Agency",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Iran_and_Spain_match_at_the_FIFA_World_Cup_23.jpg"
+  },
+  {
+    "playerId": "juanfran",
+    "playerName": "Хуанфран",
+    "author": "Антон Зайцев",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Loko-AM2018_tren_(14).jpg"
+  },
+  {
+    "playerId": "onana",
+    "playerName": "Андре Онана",
+    "author": "Franco237",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Andr%C3%A9_Onana.jpg"
+  },
+  {
+    "playerId": "de-ligt",
+    "playerName": "Маттейс де Лигт",
+    "author": "Derivative work: MajorPrince",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:2022-07-30_Fu%C3%9Fball,_M%C3%A4nner,_DFL-Supercup,_RB_Leipzig_-_FC_Bayern_M%C3%BCnchen_Matthijs_de_Ligt_(cropped).jpg"
+  },
+  {
+    "playerId": "de-jong",
+    "playerName": "Френки де Йонг",
+    "author": "Yuliia Perekopaiko",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:%D0%9C%D0%B0%D1%82%D1%87_%C2%AB%D0%94%D0%B8%D0%BD%D0%B0%D0%BC%D0%BE%C2%BB_-_%C2%AB%D0%91%D0%B0%D1%80%D1%81%D0%B5%D0%BB%D0%BE%D0%BD%D0%B0%C2%BB_0-1._2_%D0%BD%D0%BE%D1%8F%D0%B1%D1%80%D1%8F_2021_%D0%B3%D0%BE%D0%B4%D0%B0._II_%E2%80%94_1289671_(cropped).jpg"
+  },
+  {
+    "playerId": "ziyech",
+    "playerName": "Хаким Зиеш",
+    "author": "Кирилл Венедиктов",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Hakim_Ziyech_2021.jpg"
+  },
+  {
+    "playerId": "vdb",
+    "playerName": "Донни ван де Бек",
+    "author": "Ardfern",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Donny_van_de_Beek_2021_(cropped).jpg"
+  },
+  {
+    "playerId": "alisson",
+    "playerName": "Алиссон",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Alisson_Becker_Brazil_V_Morocco_13_June_2026-117_(cropped).jpg"
+  },
+  {
+    "playerId": "fabinho",
+    "playerName": "Фабиньо",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Fabinho_Brazil_V_Morocco_13_June_2026-70.jpg"
+  },
+  {
+    "playerId": "salah",
+    "playerName": "Мохамед Салах",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Mohamed_Salah_Argentina_v_Egypt_7_July_2026-163_(cropped).jpg"
+  },
+  {
+    "playerId": "trent",
+    "playerName": "Трент Александер-Арнольд",
+    "author": "Антон Зайцев",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Trent_Alexander-Arnold_2018_(cropped).jpg"
+  },
+  {
+    "playerId": "kimmich",
+    "playerName": "Йозуа Киммих",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Joshua_Kimmich_Ecuador_v_Germany_25_June_2026-149.jpg"
+  },
+  {
+    "playerId": "thiago",
+    "playerName": "Тиаго Алькантара",
+    "author": "Rolandhino1",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:UEFA_EURO_qualifiers_Sweden_vs_Spain_20191015_Thiago_Alcantara_13_(cropped).jpg"
+  },
+  {
+    "playerId": "davies",
+    "playerName": "Альфонсо Дэвис",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Alphonso_Davies_Canada_v_Qatar_18_June_2026-007_(cropped).jpg"
+  },
+  {
+    "playerId": "marquinhos",
+    "playerName": "Маркиньос",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Marquinhos_Brazil_V_Morocco_13_June_2026-153_(cropped).jpg"
+  },
+  {
+    "playerId": "verratti",
+    "playerName": "Марко Верратти",
+    "author": "Sandro Halank , Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Verratti-2019-07-17_SG_Dynamo_Dresden_vs._Paris_Saint-Germain_by_Sandro_Halank%E2%80%93126.jpg"
+  },
+  {
+    "playerId": "mbappe",
+    "playerName": "Килиан Мбаппе",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Kylian_Mbappe_France_v_Senegal_16_June_2026-391_(cropped).jpg"
+  },
+  {
+    "playerId": "di-maria",
+    "playerName": "Анхель Ди Мария",
+    "author": "Кирилл Венедиктов",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:NIG-ARG_(5).jpg"
+  },
+  {
+    "playerId": "ederson",
+    "playerName": "Эдерсон",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Ederson_Brazil_V_Morocco_13_June_2026-14_(cropped).jpg"
+  },
+  {
+    "playerId": "dias",
+    "playerName": "Рубен Диаш",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Diogo_Costa_Ruben_Dias_Croatia_v_Portugal_2_July_2026-181_(cropped).jpg"
+  },
+  {
+    "playerId": "de-bruyne",
+    "playerName": "Кевин Де Брёйне",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Kevin_De_Bruyne_USMNT_v_Belgium_Mar_28_2026-64_(cropped).jpg"
+  },
+  {
+    "playerId": "haaland",
+    "playerName": "Эрлинг Холанд",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Erling_Haaland_Morocco_v_Norway_7_June_2026-51.jpg"
+  },
+  {
+    "playerId": "bernardo",
+    "playerName": "Бернарду Силва",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Bernardo_Silva_Croatia_v_Portugal_2_July_2026-238.jpg"
+  },
+  {
+    "playerId": "mendy",
+    "playerName": "Эдуар Менди",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Edouard_Mendy_France_v_Senegal_16_June_2026-375_(cropped).jpg"
+  },
+  {
+    "playerId": "rudiger",
+    "playerName": "Антонио Рюдигер",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Antonio_Rudiger_Ecuador_v_Germany_25_June_2026-055_(cropped).jpg"
+  },
+  {
+    "playerId": "kante",
+    "playerName": "Н’Голо Канте",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:N%27Golo_Kante_France_v_Senegal_16_June_2026-397.jpg"
+  },
+  {
+    "playerId": "havertz",
+    "playerName": "Кай Хаверц",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Kai_Havertz_Ecuador_v_Germany_25_June_2026-118.jpg"
+  },
+  {
+    "playerId": "mount",
+    "playerName": "Мейсон Маунт",
+    "author": "Brian Minkoff London-Pixels",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Mountbrightonoct3_2019_(cropped).jpg"
+  },
+  {
+    "playerId": "jorginho",
+    "playerName": "Жоржиньо",
+    "author": "Vyacheslav Yevdokimov",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Jorginho,_2021_(cropped).jpg"
+  },
+  {
+    "playerId": "militao",
+    "playerName": "Эдер Милитао",
+    "author": "Real Madrid",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Eder_Militao_2021.jpg"
+  },
+  {
+    "playerId": "casemiro",
+    "playerName": "Каземиро",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Casemiro_Brazil_V_Morocco_13_June_2026-76_(cropped).jpg"
+  },
+  {
+    "playerId": "benzema",
+    "playerName": "Карим Бензема",
+    "author": "Zack",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Karim_Benzema_Pick.jpg"
+  },
+  {
+    "playerId": "vinicius",
+    "playerName": "Винисиус Жуниор",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Vin%C3%ADcius_J%C3%BAnior_Brazil_V_Morocco_13_June_2026-207_(cropped).jpg"
+  },
+  {
+    "playerId": "valverde",
+    "playerName": "Федерико Вальверде",
+    "author": "Real Madrid",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Federico_Valverde_2021_(cropped).jpg"
+  },
+  {
+    "playerId": "meret",
+    "playerName": "Алекс Мерет",
+    "author": "Rapallo80",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Alex_Meret_(cropped).jpg"
+  },
+  {
+    "playerId": "kim",
+    "playerName": "Ким Мин Джэ",
+    "author": "Werner100359",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:FC_Red_Bull_Salzburg_gegen_Bayern_M%C3%BCnchen_(2025-01-06_Testspiel)_26.jpg"
+  },
+  {
+    "playerId": "lobotka",
+    "playerName": "Станислав Лоботка",
+    "author": "Антон Зайцев",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Stanislav_Lobotka_2021.jpg"
+  },
+  {
+    "playerId": "kvara",
+    "playerName": "Хвича Кварацхелия",
+    "author": "Paté kroute",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Kvaratskhelia_asse_psg_2425.png"
+  },
+  {
+    "playerId": "osimhen",
+    "playerName": "Виктор Осимхен",
+    "author": "Fédération Guinéenne Football",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Victor-osimhen-nigeria-2024-3-4.jpg"
+  },
+  {
+    "playerId": "di-lorenzo",
+    "playerName": "Джованни Ди Лоренцо",
+    "author": "MichaelEmilio",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Norway_Italy_-_June_2025_A_20_-_Giovanni_Di_Lorenzo.jpg"
+  },
+  {
+    "playerId": "bastoni",
+    "playerName": "Алессандро Бастони",
+    "author": "MichaelEmilio",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Norway_Italy_-_June_2025_A_36_(cropped).jpg"
+  },
+  {
+    "playerId": "barella",
+    "playerName": "Николо Барелла",
+    "author": "Biser Todorov",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Nicol%C3%B2_Barella_in_2021_(cropped_2).jpg"
+  },
+  {
+    "playerId": "calhanoglu",
+    "playerName": "Хакан Чалханоглу",
+    "author": "Steindy ( talk ) 10:15, 11 April 2016 (UTC)",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:AUT_vs._TUR_2016-03-29_(342).jpg"
+  },
+  {
+    "playerId": "lautaro",
+    "playerName": "Лаутаро Мартинес",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Lautaro_Martinez_Argentina_v_Egypt_7_July_2026-040.jpg"
+  },
+  {
+    "playerId": "dimarco",
+    "playerName": "Федерико Димарко",
+    "author": "MichaelEmilio",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Norway_Italy_-_June_2025_A_26_(cropped).jpg"
+  },
+  {
+    "playerId": "dzeko",
+    "playerName": "Эдин Джеко",
+    "author": "Ailura",
+    "license": "CC BY-SA 3.0 at",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/at/deed.en",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:20150331_2026_AUT_BIH_2177_Edin_D%C5%BEeko_(cropped).jpg"
+  }
+]
