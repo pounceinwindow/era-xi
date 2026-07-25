@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { clubEras, formations, playerById, players } from "../src/data/football";
 import {
   calculateScore, chemistry, createRun, getDraftOffer, optimizeLineup,
@@ -17,6 +19,15 @@ describe("football data", () => {
     for (const era of clubEras) {
       expect(era.roster.length).toBeGreaterThanOrEqual(5);
       era.roster.forEach((id) => expect(playerById.has(id)).toBe(true));
+    }
+  });
+
+  it("ships a local portrait for every player", () => {
+    for (const player of players) {
+      expect(
+        existsSync(join(process.cwd(), "public", "players", `${player.id}.webp`)),
+        `missing portrait for ${player.name}`,
+      ).toBe(true);
     }
   });
 });

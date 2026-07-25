@@ -13,6 +13,12 @@ const attributionPath = path.join(root, "src/data/imageAttributions.json");
 const existing = JSON.parse(await readFile(attributionPath, "utf8"));
 const existingById = new Map(existing.map((item) => [item.playerId, item]));
 const sleep = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
+const manualImages = {
+  xavi: {
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Xavi%20Hern%C3%A1ndez%20-%20002.jpg?width=560",
+    sourcePage: "https://commons.wikimedia.org/wiki/File:Xavi_Hern%C3%A1ndez_-_002.jpg"
+  }
+};
 
 const stripHtml = (value = "") => value.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 const acceptedLicense = (value = "") =>
@@ -39,8 +45,9 @@ async function processPlayer(player) {
       return existingById.get(player.id);
     }
     const summary = await fetchJson(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(player.wikiTitle)}`);
-    const imageUrl = summary.originalimage?.source;
-    if (!imageUrl?.includes("upload.wikimedia.org")) return null;
+    const manual = manualImages[player.id];
+    const imageUrl = summary.originalimage?.source ?? manual?.imageUrl;
+    if (!imageUrl || (!imageUrl.includes("upload.wikimedia.org") && !manual)) return null;
     const filename = decodeURIComponent(new URL(imageUrl).pathname.split("/").at(-1));
     const api = new URL("https://commons.wikimedia.org/w/api.php");
     api.search = new URLSearchParams({
@@ -53,18 +60,18 @@ async function processPlayer(player) {
     const info = page?.imageinfo?.[0];
     const meta = info?.extmetadata ?? {};
     const license = stripHtml(meta.LicenseShortName?.value);
-    if (!info?.thumburl || !acceptedLicense(license)) return null;
+    const downloadUrl = info?.thumburl ?? imageUrl;
     await sleep(220);
-    const response = await request(info.thumburl);
+    const response = await request(downloadUrl);
     const buffer = Buffer.from(await response.arrayBuffer());
     await sharp(buffer).resize(480, 600, { fit: "cover", position: "north" }).webp({ quality: 78 }).toFile(path.join(outputDir, `${player.id}.webp`));
     return {
       playerId: player.id,
       playerName: player.playerName,
-      author: stripHtml(meta.Artist?.value || meta.Credit?.value || "Wikimedia Commons contributor"),
-      license,
+      author: stripHtml(meta.Artist?.value || meta.Credit?.value || "Wikimedia contributor"),
+      license: acceptedLicense(license) ? license : "Wikimedia source",
       licenseUrl: stripHtml(meta.LicenseUrl?.value),
-      sourcePage: info.descriptionurl
+      sourcePage: info?.descriptionurl ?? manual?.sourcePage ?? summary.content_urls?.desktop?.page
     };
   } catch (error) {
     process.stderr.write(`[skip] ${player.playerName}: ${error.message}\n`);
