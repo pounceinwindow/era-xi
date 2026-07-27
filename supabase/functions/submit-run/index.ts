@@ -5,13 +5,28 @@ import {
   getDraftOffer,
   isTournamentOver,
   reachedStage,
+  shuffle,
   simulateMatch
 } from "../../../src/game/engine.ts";
-import type { FormationId, TacticChoice } from "../../../src/game/types.ts";
+import { clubEras } from "../../../src/data/football.ts";
+import type { DraftRun, FormationId, TacticChoice } from "../../../src/game/types.ts";
 import { corsHeaders, json } from "../_shared/cors.ts";
 
 const formations = new Set<FormationId>(["4-3-3","4-2-3-1","4-4-2","3-5-2"]);
 const nicknamePattern = /^[\p{L}\p{N}_-]{3,16}$/u;
+
+function legacyDraftOfferIds(run: DraftRun): string[] {
+  const eraOrder = shuffle(clubEras, `${run.seed}:eras`);
+  let era = eraOrder[run.round % eraOrder.length];
+  let available = era.roster.filter((id) => !run.pickedPlayerIds.includes(id));
+  if (available.length < 5) {
+    era = eraOrder.find((item) =>
+      item.roster.filter((id) => !run.pickedPlayerIds.includes(id)).length >= 5
+    ) ?? era;
+    available = era.roster.filter((id) => !run.pickedPlayerIds.includes(id));
+  }
+  return shuffle(available, `${run.seed}:round:${run.round}:${era.id}`).slice(0, 5);
+}
 
 Deno.serve(async (request) => {
   if (request.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
@@ -43,7 +58,10 @@ Deno.serve(async (request) => {
   let run = createRun("daily", body.formation as FormationId, body.nickname, challenge.seed);
   for (const playerId of body.pickedPlayerIds as string[]) {
     const offeredIds = getDraftOffer(run).candidates.map((player) => player.id);
-    if (!offeredIds.includes(playerId)) return json({ error: "Invalid draft selection" }, 400);
+    const legacyOfferedIds = legacyDraftOfferIds(run);
+    if (!offeredIds.includes(playerId) && !legacyOfferedIds.includes(playerId)) {
+      return json({ error: "Invalid draft selection" }, 400);
+    }
     run = {
       ...run,
       pickedPlayerIds: [...run.pickedPlayerIds, playerId],
