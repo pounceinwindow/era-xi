@@ -69,6 +69,7 @@ export interface MatchResult {
   tactic: TacticChoice;
   fatigueAfter: number;
   note: string;
+  analysis?: string[];
 }
 
 export interface DraftRun {
@@ -78,7 +79,6 @@ export interface DraftRun {
   nickname: string;
   formation: FormationId;
   pickedPlayerIds: string[];
-  lineupOrder?: string[];
   round: number;
   fatigue: number;
   matches: MatchResult[];

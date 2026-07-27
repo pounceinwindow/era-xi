@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
-import { calculateScore, createRun, isTournamentOver, optimizeLineup, simulateMatch } from "../game/engine";
+import { calculateScore, createRun, isTournamentOver, simulateMatch } from "../game/engine";
 import type { DraftRun, FormationId, PlayMode, TacticChoice } from "../game/types";
 
 interface GameState {
@@ -9,7 +9,6 @@ interface GameState {
   start: (mode: PlayMode, formation: FormationId, seed?: string) => void;
   pick: (playerId: string) => void;
   changeFormation: (formation: FormationId) => void;
-  swapLineup: (first: number, second: number) => void;
   play: (tactic: TacticChoice) => void;
   clear: () => void;
 }
@@ -42,30 +41,15 @@ export function GameProvider({ children }: { children: ReactNode }) {
     pick(playerId) {
       setRun((current) => {
         if (!current || current.pickedPlayerIds.includes(playerId) || current.pickedPlayerIds.length >= 11) return current;
-        const pickedPlayerIds = [...current.pickedPlayerIds, playerId];
         return {
-          ...current, pickedPlayerIds, round: current.round + 1,
-          lineupOrder: pickedPlayerIds.length === 11
-            ? optimizeLineup(pickedPlayerIds, current.formation).map((item) => item.playerId)
-            : undefined
+          ...current,
+          pickedPlayerIds: [...current.pickedPlayerIds, playerId],
+          round: current.round + 1
         };
       });
     },
     changeFormation(formation) {
-      setRun((current) => current ? {
-        ...current, formation,
-        lineupOrder: current.pickedPlayerIds.length === 11
-          ? optimizeLineup(current.pickedPlayerIds, formation).map((item) => item.playerId)
-          : undefined
-      } : current);
-    },
-    swapLineup(first, second) {
-      setRun((current) => {
-        if (!current?.lineupOrder) return current;
-        const lineupOrder = [...current.lineupOrder];
-        [lineupOrder[first], lineupOrder[second]] = [lineupOrder[second], lineupOrder[first]];
-        return { ...current, lineupOrder };
-      });
+      setRun((current) => current ? { ...current, formation } : current);
     },
     play(tactic) {
       setRun((current) => {

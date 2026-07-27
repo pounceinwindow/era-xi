@@ -35,7 +35,7 @@ export async function submitRun(run: DraftRun): Promise<void> {
     const { error } = await supabase.functions.invoke("submit-run", {
       body: {
         nickname: run.nickname, seed: run.seed, formation: run.formation,
-        pickedPlayerIds: run.pickedPlayerIds, lineupOrder: run.lineupOrder,
+        pickedPlayerIds: run.pickedPlayerIds,
         matchPlans: run.matches.map((match) => ({
           formation: match.formation,
           tactic: match.tactic
@@ -58,7 +58,8 @@ export async function submitRun(run: DraftRun): Promise<void> {
 
 export async function fetchLeaderboard(): Promise<LeaderboardEntry[]> {
   if (supabase) {
-    const { data, error } = await supabase.from("daily_leaderboard").select("*").limit(100);
+    const { data, error } = await supabase.from("all_time_leaderboard").select("*")
+      .order("score", { ascending: false }).limit(100);
     if (!error && data) return data.map((row, index) => ({
       rank: index + 1, nickname: row.nickname, score: row.score, stage: row.stage,
       goalDifference: row.goal_difference, formation: row.formation, completedAt: row.completed_at

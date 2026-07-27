@@ -27,9 +27,7 @@ Deno.serve(async (request) => {
   const body = await request.json();
   if (!nicknamePattern.test(body.nickname) || !formations.has(body.formation) ||
       !Array.isArray(body.pickedPlayerIds) || body.pickedPlayerIds.length !== 11 ||
-      new Set(body.pickedPlayerIds).size !== 11 || !Array.isArray(body.lineupOrder) ||
-      body.lineupOrder.length !== 11 || new Set(body.lineupOrder).size !== 11 ||
-      !body.lineupOrder.every((id: string) => body.pickedPlayerIds.includes(id)) ||
+      new Set(body.pickedPlayerIds).size !== 11 ||
       !Array.isArray(body.matchPlans) || body.matchPlans.length < 3 || body.matchPlans.length > 7) {
     return json({ error: "Invalid run payload" }, 400);
   }
@@ -52,7 +50,6 @@ Deno.serve(async (request) => {
       round: run.round + 1
     };
   }
-  run = { ...run, lineupOrder: body.lineupOrder };
   for (const plan of body.matchPlans as { formation: FormationId; tactic: TacticChoice }[]) {
     if (isTournamentOver(run) || !formations.has(plan.formation) || !plan.tactic ||
         !["possession","press","counter"].includes(plan.tactic.style) ||
