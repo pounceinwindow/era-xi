@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import {
-  ArrowRight, BarChart3, CalendarDays, Check, ChevronRight, CircleHelp,
+  ArrowRight, BarChart3, CalendarDays, Check, ChevronRight,
   Crown, Gauge, Image as ImageIcon, Info, Medal, RotateCcw, Share2,
   Shield, Sparkles, Swords, Trophy, Users
 } from "lucide-react";
@@ -9,12 +9,12 @@ import { formations, playerById } from "./data/football";
 import attributions from "./data/imageAttributions.json";
 import {
   calculateScore, chemistry, generateOpponent, getDraftOffer, nextStage,
-  positionFit, reachedStage, squadMetrics
+  reachedStage, squadMetrics
 } from "./game/engine";
 import type {
-  FormationId, Intensity, Player, PlayMode, TacticStyle, TournamentStage
+  FormationId, Intensity, MatchResult, Player, PlayMode, Position, TacticStyle, TournamentStage
 } from "./game/types";
-import { copy } from "./i18n/ru";
+import { copy, positionLabels, positionShortLabels } from "./i18n/ru";
 import { fetchLeaderboard, isCloudLeaderboard, startDailyAttempt, submitRun } from "./services/leaderboard";
 import { useGame } from "./state/GameContext";
 
@@ -24,6 +24,12 @@ const stageLabels: Record<TournamentStage, string> = {
 };
 const styleLabels: Record<TacticStyle, string> = { possession: "Контроль мяча", press: "Высокий пресс", counter: "Контратака" };
 const intensityLabels: Record<Intensity, string> = { low: "Низкая", normal: "Обычная", high: "Высокая" };
+
+function matchOutcome(match: MatchResult) {
+  if (match.won) return { label: "Победа", className: "win" };
+  if (match.goalsFor === match.goalsAgainst) return { label: "Ничья", className: "draw" };
+  return { label: "Поражение", className: "loss" };
+}
 
 function Logo() {
   return <Link className="logo" to="/" aria-label="Era XI — на главную"><span>ERA</span><b>XI</b></Link>;
@@ -79,7 +85,7 @@ function Home() {
             <RotateCcw size={18} /> Тренировка
           </Link>
         </div>
-        {run && !run.completed && <Link className="resume-link" to={run.pickedPlayerIds.length < 11 ? "/draft" : run.matches.length ? "/match" : "/squad"}>
+        {run && !run.completed && <Link className="resume-link" to={run.pickedPlayerIds.length < 11 ? "/draft" : "/match"}>
           Продолжить забег · {run.pickedPlayerIds.length}/11 <ChevronRight size={17}/>
         </Link>}
       </div>
@@ -100,7 +106,7 @@ function Home() {
       </div>
     </section>
     <section className="feature-strip">
-      <article><span>01</span><div><b>Драфть эпохи</b><p>Каждый раунд — новый культовый клуб и сезон.</p></div></article>
+      <article><span>01</span><div><b>Собери состав</b><p>На каждую позицию — пять подходящих игроков из культовых эпох.</p></div></article>
       <article><span>02</span><div><b>Строй систему</b><p>Позиции, формация и реальные связи меняют силу.</p></div></article>
       <article><span>03</span><div><b>Играй турнир</b><p>Тактика и усталость решают, доберёшься ли до финала.</p></div></article>
     </section>
@@ -167,12 +173,13 @@ function PlayerPortrait({ player, compact = false }: { player: Player; compact?:
   />;
 }
 
-function PlayerCard({ player, onPick, compact = false }: { player: Player; onPick?: () => void; compact?: boolean }) {
+function PlayerCard({ player, onPick, position, compact = false }: { player: Player; onPick?: () => void; position?: Position; compact?: boolean }) {
+  const shownPosition = position ?? player.positions[0];
   const content = <>
     <div className="player-image">
       <PlayerPortrait player={player} compact={compact}/>
     </div>
-    <div className="player-rating"><b>{player.rating}</b><span>{player.positions[0]}</span></div>
+    <div className="player-rating"><b>{player.rating}</b><span title={positionLabels[shownPosition]}>{positionShortLabels[shownPosition]}</span></div>
     <div className="player-info"><small>{player.country} · ERA XI RATING</small><strong>{player.name}</strong>
       {!compact && <div className="player-stats">
         <span><i>АТК</i><b>{player.attack}</b></span>
@@ -189,61 +196,22 @@ function DraftPage() {
   const { run, pick } = useGame();
   const navigate = useNavigate();
   if (!run) return <Navigate to="/" replace />;
-  if (run.pickedPlayerIds.length >= 11) return <Navigate to="/squad" replace />;
+  if (run.pickedPlayerIds.length >= 11) return <Navigate to="/match" replace />;
   const currentRun = run;
   const { era, candidates } = getDraftOffer(run);
+  const position = formations[run.formation].slots[run.round];
   function choose(id: string) {
     pick(id);
-    if (currentRun.pickedPlayerIds.length === 10) navigate("/squad");
+    if (currentRun.pickedPlayerIds.length === 10) navigate("/match");
   }
   return <Shell><section className="draft-page" style={{ "--club-a": era.colors[0], "--club-b": era.colors[1] } as React.CSSProperties}>
     <header className="draft-head">
-      <div><span className="eyebrow">Раунд {run.round + 1} из 11</span><h1>{era.clubName}</h1><p>{era.season} · культовый состав</p></div>
+      <div><span className="eyebrow">Раунд {run.round + 1} из 11</span><h1>{positionLabels[position]}</h1><p>Выбери одного из пяти подходящих игроков</p></div>
       <div className="draft-progress"><span style={{ width: `${(run.round / 11) * 100}%` }}/><small>{run.pickedPlayerIds.length}/11 выбрано</small></div>
     </header>
-    <div className="candidate-grid">{candidates.map((player) => <PlayerCard key={player.id} player={player} onPick={() => choose(player.id)} />)}</div>
-    <aside className="picked-rail"><b>Твой XI</b>{run.pickedPlayerIds.map((id, index) => <span key={id}>{String(index + 1).padStart(2, "0")} · {playerById.get(id)?.name}</span>)}</aside>
+    <div className="candidate-grid">{candidates.map((player) => <PlayerCard key={player.id} player={player} position={position} onPick={() => choose(player.id)} />)}</div>
+    <aside className="picked-rail"><b>Твой XI</b>{run.pickedPlayerIds.map((id, index) => <span key={id}>{positionShortLabels[formations[run.formation].slots[index]]} · {playerById.get(id)?.name}</span>)}</aside>
   </section></Shell>;
-}
-
-function SquadPage() {
-  const { run, changeFormation, swapLineup } = useGame();
-  const navigate = useNavigate();
-  const [selectedSlot, setSelectedSlot] = useState<number | null>(null);
-  if (!run || run.pickedPlayerIds.length < 11) return <Navigate to="/draft" replace />;
-  const lineup = run.lineupOrder ?? run.pickedPlayerIds;
-  const metrics = squadMetrics(run.pickedPlayerIds, run.formation, lineup);
-  function selectSlot(index: number) {
-    if (selectedSlot === null) setSelectedSlot(index);
-    else { if (selectedSlot !== index) swapLineup(selectedSlot, index); setSelectedSlot(null); }
-  }
-  return <Shell><section className="page squad-page">
-    <div className="section-heading"><div><span className="eyebrow">Состав готов</span><h1>Найди лучшую систему</h1></div>
-      <div className="metric-row"><Metric label="Сила" value={metrics.overall}/><Metric label="Химия" value={metrics.chemistry}/></div>
-    </div>
-    <div className="formation-tabs">{formationIds.map((id) => <button className={run.formation === id ? "active" : ""} onClick={() => changeFormation(id)} key={id}>{id}</button>)}</div>
-    <p className="swap-help"><CircleHelp size={16}/> Нажми на двух игроков, чтобы поменять их местами. Чужая позиция снижает силу.</p>
-    <div className="pitch">
-      <div className="pitch-lines"/>
-      {lineup.map((playerId, index) => {
-        const player = playerById.get(playerId)!;
-        const slot = formations[run.formation].slots[index];
-        const fit = positionFit(player, slot);
-        return <button key={`${playerId}-${index}`} className={`pitch-player ${selectedSlot === index ? "selected" : ""}`} data-index={index}
-          onClick={() => selectSlot(index)} aria-label={`${player.name}, слот ${slot}, совместимость ${Math.round(fit * 100)}%`}>
-          <span className="pitch-portrait"><PlayerPortrait player={player} compact/></span>
-          <span className="pitch-slot">{slot}</span>
-          <b title={player.name}>{player.name}</b>
-          <small className={fit < 0.84 ? "bad" : ""}>{Math.round(fit * 100)}%</small>
-        </button>;
-      })}
-    </div>
-    <button className="button primary wide" onClick={() => navigate("/match")}><Swords size={19}/> Войти в турнир</button>
-  </section></Shell>;
-}
-
-function Metric({ label, value }: { label: string; value: number }) {
-  return <div className="metric"><span>{label}</span><b>{value}</b><i><span style={{ width: `${value}%` }}/></i></div>;
 }
 
 function MatchPage() {
@@ -251,16 +219,18 @@ function MatchPage() {
   const [style, setStyle] = useState<TacticStyle>("possession");
   const [intensity, setIntensity] = useState<Intensity>("normal");
   if (!run) return <Navigate to="/" replace />;
+  if (run.pickedPlayerIds.length < 11) return <Navigate to="/draft" replace />;
   if (run.completed) return <Navigate to="/result" replace />;
   const stage = nextStage(run);
   if (!stage) return <Navigate to="/result" replace />;
   const opponent = generateOpponent(run, stage);
-  const metrics = squadMetrics(run.pickedPlayerIds, run.formation, run.lineupOrder);
+  const metrics = squadMetrics(run.pickedPlayerIds, run.formation);
+  const lastMatch = run.matches.at(-1);
   function kickOff() {
     play({ style, intensity });
   }
   return <Shell><section className="page match-page">
-    <div className="match-stage"><span>{stageLabels[stage]}</span><div>{run.matches.map((match, index) => <i key={index} className={match.won ? "win" : "loss"}/>)}</div></div>
+    <div className="match-stage"><span>{stageLabels[stage]}</span><div>{run.matches.map((match, index) => <i key={index} className={matchOutcome(match).className}/>)}</div></div>
     <div className="versus">
       <article><small>ERA XI · {run.formation}</small><strong>{run.nickname}</strong><b>{metrics.overall}</b></article>
       <span>VS</span>
@@ -278,7 +248,11 @@ function MatchPage() {
     </div>
     <div className="fatigue"><span><Gauge size={18}/> Усталость состава</span><b>{run.fatigue}%</b><i><span style={{ width: `${run.fatigue}%` }}/></i></div>
     <div className="match-formations">{formationIds.map((id) => <button className={run.formation === id ? "active" : ""} onClick={() => changeFormation(id)} key={id}>{id}</button>)}</div>
-    {run.matches.at(-1) && <article className="last-result"><span>Прошлый матч</span><b>{run.matches.at(-1)!.goalsFor}:{run.matches.at(-1)!.goalsAgainst}</b><p>{run.matches.at(-1)!.note}</p></article>}
+    {lastMatch && <article className={`last-result ${matchOutcome(lastMatch).className}`}>
+      <span>Прошлый матч · {matchOutcome(lastMatch).label}</span><b>{lastMatch.goalsFor}:{lastMatch.goalsAgainst}</b>
+      <p>{lastMatch.note}</p>
+      <ul>{lastMatch.analysis?.map((item) => <li key={item}>{item}</li>)}</ul>
+    </article>}
     <button className="button primary wide" onClick={kickOff}><Swords size={19}/> Играть матч</button>
   </section></Shell>;
 }
@@ -306,10 +280,18 @@ function ResultPage() {
   return <Shell><section className="result-page">
     <div className="result-crown">{stage === "champion" ? <Crown size={44}/> : <Medal size={44}/>}</div>
     <span className="eyebrow">Забег завершён</span><h1>{stage === "champion" ? "Эпоха переписана." : `Остановка: ${stageLabels[stage]}`}</h1>
-    <div className="final-score"><span>Итоговый счёт</span><b>{score.toLocaleString("ru-RU")}</b><small>{run.formation} · химия {chemistry(run.pickedPlayerIds, run.formation, run.lineupOrder)}</small></div>
-    <div className="journey">{run.matches.map((match, index) => <article key={index} className={match.won ? "win" : "loss"}>
+    <div className="final-score"><span>Итоговый счёт</span><b>{score.toLocaleString("ru-RU")}</b><small>{run.formation} · химия {chemistry(run.pickedPlayerIds, run.formation)}</small></div>
+    <div className="journey">{run.matches.map((match, index) => <article key={index} className={matchOutcome(match).className}>
       <span>{stageLabels[match.stage]}</span><strong>{match.goalsFor}:{match.goalsAgainst}</strong><small>{match.opponent.name}</small>
     </article>)}</div>
+    <section className="run-analysis">
+      <h2>Почему получился такой результат</h2>
+      {run.matches.map((match, index) => <article key={index} className={matchOutcome(match).className}>
+        <header><span>{stageLabels[match.stage]} · {matchOutcome(match).label}</span><b>{match.goalsFor}:{match.goalsAgainst}</b></header>
+        <p>{match.note}</p>
+        <ul>{match.analysis?.map((item) => <li key={item}>{item}</li>)}</ul>
+      </article>)}
+    </section>
     <div className="result-actions"><button className="button primary" onClick={share}><Share2 size={18}/> Поделиться</button>
       <Link className="button ghost" to="/leaderboard"><BarChart3 size={18}/> Таблица</Link>
       <button className="text-button" onClick={() => { clear(); navigate("/"); }}><RotateCcw size={17}/> Новый забег</button></div>
@@ -323,8 +305,8 @@ function LeaderboardPage() {
     fetchLeaderboard().then(setEntries).finally(() => setLoading(false));
   }, []);
   return <Shell><section className="page leaderboard-page">
-    <div className="section-heading"><div><span className="eyebrow">Сегодня · общий seed</span><h1>Лидерборд</h1></div>
-      <span className="cloud-state">{isCloudLeaderboard ? "Live Supabase" : "Локальный preview"}</span></div>
+    <div className="section-heading"><div><span className="eyebrow">Лучшие результаты всех сезонов</span><h1>Лидерборд за всё время</h1></div>
+      <span className="cloud-state">{isCloudLeaderboard ? "All-time · Supabase" : "Локальный preview"}</span></div>
     <div className="leaderboard-table">
       <div className="table-head"><span>#</span><span>Менеджер</span><span>Стадия</span><span>Схема</span><span>Очки</span></div>
       {loading && <div className="table-loading" role="status">Загружаем результаты…</div>}
@@ -359,7 +341,7 @@ export function App() {
     <Route path="/" element={<Home/>}/>
     <Route path="/formation/:mode" element={<FormationPage/>}/>
     <Route path="/draft" element={<DraftPage/>}/>
-    <Route path="/squad" element={<SquadPage/>}/>
+    <Route path="/squad" element={<Navigate to="/match" replace/>}/>
     <Route path="/match" element={<MatchPage/>}/>
     <Route path="/result" element={<ResultPage/>}/>
     <Route path="/leaderboard" element={<LeaderboardPage/>}/>

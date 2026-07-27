@@ -49,14 +49,15 @@ export function createRun(mode: DraftRun["mode"], formation: FormationId, nickna
 
 export function getDraftOffer(run: DraftRun): { era: typeof clubEras[number]; candidates: Player[] } {
   const eraOrder = shuffle(clubEras, `${run.seed}:eras`);
-  let era = eraOrder[run.round % eraOrder.length];
-  let available = era.roster.filter((id) => !run.pickedPlayerIds.includes(id));
-  if (available.length < 5) {
-    era = eraOrder.find((item) => item.roster.filter((id) => !run.pickedPlayerIds.includes(id)).length >= 5) ?? era;
-    available = era.roster.filter((id) => !run.pickedPlayerIds.includes(id));
-  }
-  const ids = shuffle(available, `${run.seed}:round:${run.round}:${era.id}`).slice(0, 5);
-  return { era, candidates: ids.map((id) => playerById.get(id)).filter((player): player is Player => Boolean(player)) };
+  const era = eraOrder[run.round % eraOrder.length];
+  const position = formations[run.formation].slots[run.round];
+  const available = players.filter((player) =>
+    player.positions.includes(position) && !run.pickedPlayerIds.includes(player.id)
+  );
+  return {
+    era,
+    candidates: shuffle(available, `${run.seed}:round:${run.round}:${position}`).slice(0, 5)
+  };
 }
 
 const defense = new Set<Position>(["LB","CB","RB","LWB","RWB"]);
@@ -103,14 +104,9 @@ export function optimizeLineup(playerIds: string[], formationId: FormationId): L
   }));
 }
 
-export function chemistry(playerIds: string[], formationId: FormationId, lineupOrder?: string[]): number {
+export function chemistry(playerIds: string[], formationId: FormationId): number {
   const selected = playerIds.map((id) => playerById.get(id)).filter((player): player is Player => Boolean(player));
-  const lineup = lineupOrder?.length === playerIds.length
-    ? lineupOrder.map((playerId, index) => ({
-      playerId, slot: formations[formationId].slots[index],
-      fit: positionFit(playerById.get(playerId)!, formations[formationId].slots[index])
-    }))
-    : optimizeLineup(playerIds, formationId);
+  const lineup = optimizeLineup(playerIds, formationId);
   const averageFit = lineup.reduce((sum, item) => sum + item.fit, 0) / Math.max(1, lineup.length);
   let links = 0;
   for (let left = 0; left < selected.length; left += 1) {
@@ -124,20 +120,15 @@ export function chemistry(playerIds: string[], formationId: FormationId, lineupO
   return Math.round(Math.min(100, averageFit * 58 + Math.min(32, links) + systemBonus));
 }
 
-export function squadMetrics(playerIds: string[], formationId: FormationId, lineupOrder?: string[]) {
-  const lineup = lineupOrder?.length === playerIds.length
-    ? lineupOrder.map((playerId, index) => ({
-      playerId, slot: formations[formationId].slots[index],
-      fit: positionFit(playerById.get(playerId)!, formations[formationId].slots[index])
-    }))
-    : optimizeLineup(playerIds, formationId);
+export function squadMetrics(playerIds: string[], formationId: FormationId) {
+  const lineup = optimizeLineup(playerIds, formationId);
   const picked = lineup.map((assignment) => ({
     assignment,
     player: playerById.get(assignment.playerId)!
   }));
   const weighted = (key: "attack" | "midfield" | "defense" | "goalkeeping") =>
     picked.reduce((sum, item) => sum + item.player[key] * item.assignment.fit, 0) / Math.max(1, picked.length);
-  const chem = chemistry(playerIds, formationId, lineupOrder);
+  const chem = chemistry(playerIds, formationId);
   const overall = picked.reduce((sum, item) => sum + item.player.rating * item.assignment.fit, 0) / Math.max(1, picked.length);
   return {
     attack: weighted("attack"), midfield: weighted("midfield"),
@@ -149,7 +140,11 @@ export function squadMetrics(playerIds: string[], formationId: FormationId, line
 const styleAdvantage: Record<TacticStyle, TacticStyle> = {
   press: "possession", possession: "counter", counter: "press"
 };
+const tacticNames: Record<TacticStyle, string> = {
+  possession: "контроль мяча", press: "высокий пресс", counter: "контратака"
+};
 const intensityMultiplier: Record<Intensity, number> = { low: 0.97, normal: 1, high: 1.05 };
+const intensityNames: Record<Intensity, string> = { low: "низкая", normal: "обычная", high: "высокая" };
 const fatigueDelta: Record<Intensity, number> = { low: -8, normal: 4, high: 12 };
 const stages: TournamentStage[] = ["group","group","group","r16","qf","sf","final"];
 const opponentPrefixes = ["Aurora","Atlas","Union","Royal","Olympic","Dynamo","Racing","Sporting"];
@@ -196,15 +191,17 @@ function poisson(lambda: number, random: () => number): number {
 export function simulateMatch(run: DraftRun, tactic: TacticChoice): MatchResult {
   const stage = nextStage(run) ?? "group";
   const opponent = generateOpponent(run, stage);
-  const metrics = squadMetrics(run.pickedPlayerIds, run.formation, run.lineupOrder);
+  const metrics = squadMetrics(run.pickedPlayerIds, run.formation);
   const random = createRng(`${run.seed}:match:${run.matches.length}:${tactic.style}:${tactic.intensity}`);
   const tacticEdge = styleAdvantage[tactic.style] === opponent.style ? 4 :
     styleAdvantage[opponent.style] === tactic.style ? -4 : 0;
   const fatiguePenalty = run.fatigue * 0.08;
   const userPower = metrics.overall * intensityMultiplier[tactic.intensity] + tacticEdge - fatiguePenalty;
   const attackDelta = (userPower - opponent.rating) / 24;
-  let goalsFor = poisson(Math.max(0.35, Math.min(3.2, 1.35 + attackDelta)), random);
-  let goalsAgainst = poisson(Math.max(0.3, Math.min(3, 1.2 - attackDelta * 0.75)), random);
+  const expectedGoalsFor = Math.max(0.35, Math.min(3.2, 1.35 + attackDelta));
+  const expectedGoalsAgainst = Math.max(0.3, Math.min(3, 1.2 - attackDelta * 0.75));
+  let goalsFor = poisson(expectedGoalsFor, random);
+  let goalsAgainst = poisson(expectedGoalsAgainst, random);
   let penaltiesFor: number | undefined;
   let penaltiesAgainst: number | undefined;
   if (stage !== "group" && goalsFor === goalsAgainst) {
@@ -222,9 +219,29 @@ export function simulateMatch(run: DraftRun, tactic: TacticChoice): MatchResult 
   }
   const won = goalsFor > goalsAgainst || (goalsFor === goalsAgainst && (penaltiesFor ?? 0) > (penaltiesAgainst ?? 0));
   const fatigueAfter = Math.max(0, Math.min(100, run.fatigue + fatigueDelta[tactic.intensity]));
-  const note = tacticEdge > 0 ? "Тактика вскрыла слабую сторону соперника." :
-    tacticEdge < 0 ? "Соперник прочитал ваш план на матч." :
-      fatiguePenalty > 4 ? "Накопленная усталость заметно снизила темп." : "Равный тактический матч решил класс игроков.";
+  const powerDifference = userPower - opponent.rating;
+  const isDraw = goalsFor === goalsAgainst && penaltiesFor === undefined;
+  const note = won
+    ? powerDifference >= 3 ? "Преимущество по игре превратилось в заслуженную победу." : "В равном матче команда лучше реализовала свои моменты."
+    : isDraw
+      ? powerDifference >= 3 ? "Команда была сильнее по игре, но не реализовала преимущество." : "Силы оказались близки, и матч завершился вничью."
+      : powerDifference <= -3 ? "Соперник создал игровое преимущество и закономерно победил." : "Равный матч был проигран из-за реализации моментов.";
+  const intensityEffect = metrics.overall * (intensityMultiplier[tactic.intensity] - 1);
+  const tacticAnalysis = tacticEdge > 0
+    ? `Тактика: ${tacticNames[tactic.style]} дала преимущество против стиля «${tacticNames[opponent.style]}» (+${tacticEdge} к силе).`
+    : tacticEdge < 0
+      ? `Тактика: стиль соперника «${tacticNames[opponent.style]}» оказался сильнее выбранного плана (−${Math.abs(tacticEdge)} к силе).`
+      : "Тактика: ни одна из команд не получила прямого преимущества по стилю.";
+  const intensityEffectText = intensityEffect > 0
+    ? `+${intensityEffect.toFixed(1)}`
+    : intensityEffect < 0 ? `−${Math.abs(intensityEffect).toFixed(1)}` : "без бонуса";
+  const penaltiesText = penaltiesFor === undefined ? "" : `, пенальти ${penaltiesFor}:${penaltiesAgainst}`;
+  const analysis = [
+    `Сила: ваш состав ${metrics.overall}, соперник ${opponent.rating}; итоговая сила на матч ${userPower.toFixed(1)}.`,
+    tacticAnalysis,
+    `Физика: ${intensityNames[tactic.intensity]} интенсивность — ${intensityEffectText}; усталость ${run.fatigue}% дала штраф ${fatiguePenalty.toFixed(1)}, после матча — ${fatigueAfter}%.`,
+    `Моменты: ожидаемый счёт ${expectedGoalsFor.toFixed(1)}:${expectedGoalsAgainst.toFixed(1)}, фактический — ${goalsFor}:${goalsAgainst}${penaltiesText}.`
+  ];
   return {
     stage,
     formation: run.formation,
@@ -236,7 +253,8 @@ export function simulateMatch(run: DraftRun, tactic: TacticChoice): MatchResult 
     won,
     tactic,
     fatigueAfter,
-    note
+    note,
+    analysis
   };
 }
 
@@ -253,7 +271,7 @@ export function reachedStage(run: DraftRun): TournamentStage {
 }
 
 export function calculateScore(run: DraftRun): number {
-  const metrics = squadMetrics(run.pickedPlayerIds, run.formation, run.lineupOrder);
+  const metrics = squadMetrics(run.pickedPlayerIds, run.formation);
   const group = run.matches.slice(0, 3);
   const groupPoints = group.reduce((sum, match) => sum + (match.won ? 3 : match.goalsFor === match.goalsAgainst ? 1 : 0), 0);
   const wins = run.matches.filter((match) => match.won).length;

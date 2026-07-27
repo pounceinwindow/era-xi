@@ -37,12 +37,22 @@ describe("deterministic draft", () => {
     expect(shuffle([1,2,3,4,5], "same")).toEqual(shuffle([1,2,3,4,5], "same"));
   });
 
-  it("offers five unpicked players", () => {
-    const run = createRun("daily", "4-3-3", "tester", "fixed-seed");
-    const first = getDraftOffer(run);
-    expect(first.candidates).toHaveLength(5);
-    const next = getDraftOffer({ ...run, pickedPlayerIds: [first.candidates[0].id], round: 1 });
-    expect(next.candidates.map((player) => player.id)).not.toContain(first.candidates[0].id);
+  it("offers five suitable players for every formation slot", () => {
+    for (const formation of Object.values(formations)) {
+      let run = createRun("daily", formation.id, "tester", "fixed-seed");
+      for (const position of formation.slots) {
+        const offer = getDraftOffer(run);
+        expect(offer.candidates).toHaveLength(5);
+        expect(offer.candidates.every((player) => player.positions.includes(position))).toBe(true);
+        const playerId = offer.candidates[0].id;
+        expect(run.pickedPlayerIds).not.toContain(playerId);
+        run = {
+          ...run,
+          pickedPlayerIds: [...run.pickedPlayerIds, playerId],
+          round: run.round + 1
+        };
+      }
+    }
   });
 });
 
@@ -76,6 +86,13 @@ describe("match engine", () => {
 
   it("replays an identical score from identical inputs", () => {
     expect(simulateMatch(base, tactic)).toEqual(simulateMatch(base, tactic));
+  });
+
+  it("explains the result with strength, tactics, fitness and chances", () => {
+    const result = simulateMatch(base, tactic);
+    expect(result.analysis).toHaveLength(4);
+    expect(result.analysis?.join(" ")).toMatch(/Сила.*Тактика.*Физика.*Моменты/);
+    expect(result.note.length).toBeGreaterThan(20);
   });
 
   it("accumulates fatigue and calculates a final score", () => {
